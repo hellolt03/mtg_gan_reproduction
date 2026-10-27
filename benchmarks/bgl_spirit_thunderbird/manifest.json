@@ -1,0 +1,142 @@
+{
+  "suite": "bgl_spirit_thunderbird_six_directions",
+  "status": "code_written_waiting_user_approval",
+  "domains": {
+    "bgl": {
+      "log_path": "D:\\PaperWork\\count_granger\\dataset\\BGL\\BGL.log",
+      "bytes": 743185031,
+      "planned_scope": "entire_available_file",
+      "window_seconds": 21600,
+      "stride_seconds": 3600,
+      "window_setting_status": "current_paper_reconstruction"
+    },
+    "spirit": {
+      "log_path": "D:\\PaperWork\\count_granger\\dataset\\Spirit\\Spirit1G.log",
+      "bytes": 1073741695,
+      "planned_scope": "entire_available_file",
+      "window_seconds": 3600,
+      "stride_seconds": 3600,
+      "window_setting_status": "extension_choice"
+    },
+    "thunderbird": {
+      "log_path": "D:\\PaperWork\\count_granger\\dataset\\Thunderbird\\Thunderbird.log",
+      "bytes": 31788301041,
+      "planned_scope": "entire_available_file",
+      "window_seconds": 3600,
+      "stride_seconds": 3600,
+      "window_setting_status": "current_paper_reconstruction"
+    }
+  },
+  "tasks": [
+    {
+      "id": "bgl_to_spirit",
+      "source": "bgl",
+      "target": "spirit",
+      "status": "awaiting_user_approval_before_validation_and_training",
+      "source_checkpoint_key": "bgl",
+      "config": "D:\\PaperWork\\毕业论文\\mtg_gan_reproduction\\configs\\inductive_v2\\bgl_to_spirit.json",
+      "evaluations": [
+        "source_test",
+        "target_before_adaptation",
+        "target_after_adaptation"
+      ]
+    },
+    {
+      "id": "bgl_to_thunderbird",
+      "source": "bgl",
+      "target": "thunderbird",
+      "status": "awaiting_user_approval_before_validation_and_training",
+      "source_checkpoint_key": "bgl",
+      "config": "D:\\PaperWork\\毕业论文\\mtg_gan_reproduction\\configs\\inductive_v2\\bgl_to_thunderbird.json",
+      "evaluations": [
+        "source_test",
+        "target_before_adaptation",
+        "target_after_adaptation"
+      ]
+    },
+    {
+      "id": "spirit_to_bgl",
+      "source": "spirit",
+      "target": "bgl",
+      "status": "awaiting_user_approval_before_validation_and_training",
+      "source_checkpoint_key": "spirit",
+      "config": "D:\\PaperWork\\毕业论文\\mtg_gan_reproduction\\configs\\inductive_v2\\spirit_to_bgl.json",
+      "evaluations": [
+        "source_test",
+        "target_before_adaptation",
+        "target_after_adaptation"
+      ]
+    },
+    {
+      "id": "spirit_to_thunderbird",
+      "source": "spirit",
+      "target": "thunderbird",
+      "status": "awaiting_user_approval_before_validation_and_training",
+      "source_checkpoint_key": "spirit",
+      "config": "D:\\PaperWork\\毕业论文\\mtg_gan_reproduction\\configs\\inductive_v2\\spirit_to_thunderbird.json",
+      "evaluations": [
+        "source_test",
+        "target_before_adaptation",
+        "target_after_adaptation"
+      ]
+    },
+    {
+      "id": "thunderbird_to_bgl",
+      "source": "thunderbird",
+      "target": "bgl",
+      "status": "awaiting_user_approval_before_validation_and_training",
+      "source_checkpoint_key": "thunderbird",
+      "config": "D:\\PaperWork\\毕业论文\\mtg_gan_reproduction\\configs\\inductive_v2\\thunderbird_to_bgl.json",
+      "evaluations": [
+        "source_test",
+        "target_before_adaptation",
+        "target_after_adaptation"
+      ]
+    },
+    {
+      "id": "thunderbird_to_spirit",
+      "source": "thunderbird",
+      "target": "spirit",
+      "status": "awaiting_user_approval_before_validation_and_training",
+      "source_checkpoint_key": "thunderbird",
+      "config": "D:\\PaperWork\\毕业论文\\mtg_gan_reproduction\\configs\\inductive_v2\\thunderbird_to_spirit.json",
+      "evaluations": [
+        "source_test",
+        "target_before_adaptation",
+        "target_after_adaptation"
+      ]
+    }
+  ],
+  "planned_seeds": [
+    42,
+    43,
+    44
+  ],
+  "split_policy": {
+    "unit": "chronological_raw_records_before_windowing",
+    "fractions": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "reuse_same_domain_split_across_all_tasks": true,
+    "context_must_not_cross_sampling_segments": true
+  },
+  "source_training": "known_normal_samples_only",
+  "target_training": "unlabeled_train_split_only",
+  "primary_calibration": "source_normal_validation",
+  "secondary_calibration": "target_unlabeled_train_report_separately",
+  "source_checkpoint_reuse": "three source checkpoints per seed, two independent target copies each",
+  "implemented_model_track": "inductive_v2_extension_not_runtime_validated",
+  "runner": "D:\\PaperWork\\毕业论文\\mtg_gan_reproduction\\scripts\\run_six_directions.py",
+  "runtime_validation": "not_run_user_requested_approval_first",
+  "required_runtime_validation": [
+    "continuous_data_and_shared_domain_cache",
+    "shared_pair_decoder_and_mask",
+    "permutation_invariant_graph_critic",
+    "node_presence_and_sparse_prediction",
+    "size_aware_spectral_scoring_and_component_calibration",
+    "source_and_adaptation_validation"
+  ],
+  "previous_diagnostic_run": "D:\\PaperWork\\毕业论文\\mtg_gan_reproduction\\runs\\bgl_to_thunderbird_pilot_20261026"
+}

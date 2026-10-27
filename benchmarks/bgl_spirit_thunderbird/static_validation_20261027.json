@@ -1,0 +1,22 @@
+{
+  "date_local": "2026-10-27",
+  "scope": "static_only_no_model_import_or_execution",
+  "syntax": "compileall mtg_gan scripts tests passed",
+  "directed_configs": 6,
+  "shared_domain_protocol": "consistent",
+  "shared_source_checkpoint_paths": 3,
+  "raw_paths_and_official_minilm_weight": "exist",
+  "new_runtime_directories": "absent",
+  "test_functions_by_file": {
+    "test_data.py": 7,
+    "test_hdfs_semantics.py": 2,
+    "test_inductive_v2.py": 9,
+    "test_model.py": 5,
+    "test_pipeline.py": 1
+  },
+  "test_functions_total": 24,
+  "tests_executed_this_revision": false,
+  "training_and_evaluation_executed_this_revision": false,
+  "all_config_files_loadable": 14,
+  "reviewed_document_local_links": "exist"
+}

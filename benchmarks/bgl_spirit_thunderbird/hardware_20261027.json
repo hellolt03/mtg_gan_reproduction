@@ -1,0 +1,22 @@
+{
+  "measurement_date_local": "2026-10-27",
+  "timezone": "Asia/Shanghai",
+  "processor": "Intel(R) Core(TM) i7-14650HX",
+  "physical_cores": 16,
+  "logical_cores": 24,
+  "ram_total_gib": 15.73,
+  "ram_available_gib": 6.44,
+  "disks": {
+    "C:/": {
+      "total_gib": 400.0,
+      "free_gib": 280.38
+    },
+    "D:/": {
+      "total_gib": 451.46,
+      "free_gib": 222.23
+    }
+  },
+  "python": "3.13.9",
+  "gpu": {"name": "NVIDIA GeForce RTX 5060 Laptop GPU", "total_mib": 8151, "free_mib": 7842, "driver": "610.47", "method": "read-only nvidia-smi"},
+  "method": "read-only psutil and registry query, no model run"
+}

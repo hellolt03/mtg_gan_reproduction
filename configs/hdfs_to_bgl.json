@@ -1,0 +1,83 @@
+{
+  "source": {
+    "name": "hdfs",
+    "log_path": "D:\\PaperWork\\count_granger\\dataset\\HDFS\\HDFS.log",
+    "label_path": "D:\\PaperWork\\count_granger\\dataset\\HDFS\\anomaly_label.csv",
+    "window_seconds": 3600,
+    "stride_seconds": 3600,
+    "max_lines": null,
+    "allow_partial_sessions": false
+  },
+  "target": {
+    "name": "bgl",
+    "log_path": "D:\\PaperWork\\count_granger\\dataset\\BGL\\BGL.log",
+    "label_path": null,
+    "window_seconds": 21600,
+    "stride_seconds": 3600,
+    "max_lines": null,
+    "allow_partial_sessions": false
+  },
+  "output_dir": "../runs/hdfs_to_bgl",
+  "data": {
+    "train_fraction": 0.6,
+    "validation_fraction": 0.2,
+    "context_graphs": 4,
+    "order": 2,
+    "cumulative": true,
+    "max_nodes": 384,
+    "drain_depth": 4,
+    "drain_similarity": 0.4
+  },
+  "semantics": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "local_files_only": true,
+    "batch_size": 64
+  },
+  "model": {
+    "input_dim": 384,
+    "hidden_dim": 64,
+    "gcn_layers": 2,
+    "tcn_layers": 3,
+    "kernel_size": 3,
+    "dropout": 0.1,
+    "noise_dim": 16,
+    "critic_hidden": 64,
+    "mask_rate": 0.6,
+    "mask_temperature": 1.0,
+    "alpha_start": 0.1,
+    "alpha_end": 0.9,
+    "alpha_gamma": 2.0,
+    "alpha_beta": 2.0
+  },
+  "train": {
+    "seed": 42,
+    "device": "auto",
+    "batch_size": 2,
+    "pretrain_epochs": 20,
+    "source_epochs": 50,
+    "target_epochs": 10,
+    "learning_rate": 0.0001,
+    "critic_steps": 3,
+    "gradient_penalty": 10.0,
+    "temperature": 0.2,
+    "augment_drop": 0.2,
+    "contrast_weight": 1.0,
+    "contrast_margin": 1.0,
+    "contrast_mode": "paper_separation",
+    "spectral_weight": 1.0,
+    "spectral_trace": 0.01,
+    "heat_time": 1.0,
+    "reconstruction_weight": 0.0,
+    "freeze_encoder": false
+  },
+  "score": {
+    "local_weight": 0.5,
+    "top_k": 3,
+    "local_radius": 5,
+    "quantile": 0.99,
+    "dynamic_history": 256,
+    "dynamic_min_history": 32,
+    "dynamic": true,
+    "calibration": "source_normal_validation"
+  }
+}
